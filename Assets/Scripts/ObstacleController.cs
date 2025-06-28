@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    public float threshold = -5.5f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -12,6 +13,10 @@ public class ObstacleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        float posY = this.gameObject.transform.position.y;
+        if (posY < threshold)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
