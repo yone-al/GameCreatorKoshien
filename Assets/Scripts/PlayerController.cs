@@ -1,9 +1,13 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public int hp = 3;
     public float speed = 3.0f;
+
+    public GameObject gameManager;
+    public GameObject hpText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -14,6 +18,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!gameManager.GetComponent<GameManager>().isGameActive)
+        {
+            return;
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -27,6 +36,12 @@ public class PlayerController : MonoBehaviour
         {
             hp--;
             Debug.Log("hp: " + hp);
+            hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + hp;
+
+            if (hp <= 0)
+            {
+                gameManager.GetComponent<GameManager>().GameOver();
+            }
         }
     }
 }
