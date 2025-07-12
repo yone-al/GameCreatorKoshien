@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
 {
     public int hp = 3;
     public float speed = 3.0f;
+    public float limitX = 2.5f;
+    public float limitY = 4.5f;
 
     public GameObject gameManager;
     public GameObject hpText;
@@ -28,6 +30,12 @@ public class PlayerController : MonoBehaviour
 
         Vector3 movement = new Vector3(horizontal, vertical, 0) * speed * Time.deltaTime;
         this.gameObject.transform.Translate(movement);
+
+        // Mathf.Clampを使って値を範囲内に収める
+        float clampedX = Mathf.Clamp(this.gameObject.transform.position.x, -limitX, limitX);
+        this.gameObject.transform.position = new Vector3(clampedX, this.gameObject.transform.position.y, 0);
+        float clampedY = Mathf.Clamp(this.gameObject.transform.position.y, -limitY, limitY);
+        this.gameObject.transform.position = new Vector3(this.gameObject.transform.position.x, clampedY, 0);
     }
 
     void OnTriggerEnter2D(Collider2D other)
