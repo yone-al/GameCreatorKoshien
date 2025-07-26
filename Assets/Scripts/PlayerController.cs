@@ -1,15 +1,16 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public int hp = 3;
+    public int yaruki = 5;
     public float speed = 3.0f;
-    public float limitX = 2.5f;
+    public float limitX = 1.5f;
     public float limitY = 4.5f;
 
     public GameObject gameManager;
-    public GameObject hpText;
+    public GameObject yarukiGauge;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,11 +43,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            hp--;
-            Debug.Log("hp: " + hp);
-            hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + hp;
+            yaruki--;
 
-            if (hp <= 0)
+
+            Debug.Log("yaruki: " + yaruki);
+            yarukiGauge.GetComponent<Slider>().value = (float)yaruki / 5.0f;
+
+            if (yaruki <= 0)
             {
                 gameManager.GetComponent<GameManager>().GameOver();
             }
