@@ -6,13 +6,13 @@ public class GameManager : MonoBehaviour
     public bool isGameActive = true;
     public GameObject gameOverPanel;
     public float timeLimit = 60.0f;
-    private float timeLeft;
+    public float timeCount = 0.0f;
     public GameObject timerText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        timeLeft = timeLimit;
+
     }
 
     // Update is called once per frame
@@ -23,15 +23,17 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        timeLeft -= Time.deltaTime;
-        if (timeLeft <= 0.0f)
-        {
-            timeLeft = 0.0f;
-            GameOver();
-        }
+        timeCount += Time.deltaTime;
 
-        Debug.Log(timeLeft);
-        timerText.GetComponent<TextMeshProUGUI>().text = timeLeft.ToString("F0");
+        timerText.GetComponent<TextMeshProUGUI>().text = "8:" + ((int)timeCount).ToString().PadLeft(2, '0');
+        Debug.Log(timeCount);
+
+        if (timeCount >= timeLimit)
+        {
+            timeCount = timeLimit;
+            GameOver();
+            timerText.GetComponent<TextMeshProUGUI>().text = "9:00";
+        }
     }
 
     public void GameOver()

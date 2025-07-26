@@ -4,7 +4,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public int yaruki = 5;
+    public int maxYaruki = 5;
+    public int yaruki;
     public float speed = 3.0f;
     public float limitX = 1.5f;
     public float limitY = 4.5f;
@@ -15,7 +16,9 @@ public class PlayerController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        yaruki = maxYaruki;
+        yarukiGauge.GetComponent<Slider>().maxValue = maxYaruki;
+        yarukiGauge.GetComponent<Slider>().value = yaruki;
     }
 
     // Update is called once per frame
@@ -44,10 +47,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             yaruki--;
-
-
-            Debug.Log("yaruki: " + yaruki);
-            yarukiGauge.GetComponent<Slider>().value = (float)yaruki / 5.0f;
+            yarukiGauge.GetComponent<Slider>().value = yaruki;
+            Debug.Log("やる気: " + yaruki);
 
             if (yaruki <= 0)
             {

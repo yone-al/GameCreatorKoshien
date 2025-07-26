@@ -3,7 +3,7 @@ using UnityEngine;
 public class ObstacleController : MonoBehaviour
 {
     public float threshold = -5.5f;
-    public GameObject gameManager;
+    private GameObject gameManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
