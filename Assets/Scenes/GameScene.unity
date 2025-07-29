@@ -256,8 +256,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 8:00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 79e2463c8bcf7432d9430a5cd76d588e, type: 2}
+  m_sharedMaterial: {fileID: -4592229266267152658, guid: 79e2463c8bcf7432d9430a5cd76d588e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -714,10 +714,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: yaruki
+  m_text: "\u3084\u308B\u6C17"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 79e2463c8bcf7432d9430a5cd76d588e, type: 2}
+  m_sharedMaterial: {fileID: -4592229266267152658, guid: 79e2463c8bcf7432d9430a5cd76d588e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f78bf73cd694a4db9fc380315f77e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxYaruki: 5
   yaruki: 5
   speed: 5
   limitX: 1.5
@@ -1396,6 +1397,7 @@ MonoBehaviour:
   isGameActive: 1
   gameOverPanel: {fileID: 1897205878}
   timeLimit: 60
+  timeCount: 0
   timerText: {fileID: 365434734}
 --- !u!1 &1897205878
 GameObject:
