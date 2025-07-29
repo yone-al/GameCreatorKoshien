@@ -1,20 +1,24 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public int hp = 3;
+    public int maxYaruki = 5;
+    public int yaruki;
     public float speed = 3.0f;
-    public float limitX = 2.5f;
+    public float limitX = 1.5f;
     public float limitY = 4.5f;
 
     public GameObject gameManager;
-    public GameObject hpText;
+    public GameObject yarukiGauge;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        yaruki = maxYaruki;
+        yarukiGauge.GetComponent<Slider>().maxValue = maxYaruki;
+        yarukiGauge.GetComponent<Slider>().value = yaruki;
     }
 
     // Update is called once per frame
@@ -42,11 +46,11 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            hp--;
-            Debug.Log("hp: " + hp);
-            hpText.GetComponent<TextMeshProUGUI>().text = "HP: " + hp;
+            yaruki--;
+            yarukiGauge.GetComponent<Slider>().value = yaruki;
+            Debug.Log("やる気: " + yaruki);
 
-            if (hp <= 0)
+            if (yaruki <= 0)
             {
                 gameManager.GetComponent<GameManager>().GameOver();
             }
